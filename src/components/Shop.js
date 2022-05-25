@@ -1,9 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import ItemCard from "./ItemCard";
 
 
 const Shop = () => {
-  const [items, setItems] = useState('');
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     fetchItems();
@@ -21,7 +22,6 @@ const Shop = () => {
     const response = await fetch(
       'https://the-sneaker-database.p.rapidapi.com/sneakers?limit=10&brand=crocs', options
     )
-
     const data = await response.json();
     setItems(data.results)
   }
@@ -31,11 +31,12 @@ const Shop = () => {
       <h1>Welcome to my twizted SHOP of horrorz</h1>
       <div className="itemList">
         {items.map(item => (
-          <div key={item.id} className="itemCard">
-            <h2>{item.name} - ${item.retailPrice}</h2>
-            <img src={item.image.thumbnail} alt="" />
-            <h3></h3>
-          </div>
+          <ItemCard
+            id={item.id} 
+            name={item.name} 
+            retailPrice={item.retailPrice}
+            image={item.image.thumbnail}
+          />
         ))}
       </div>
     </div> 
