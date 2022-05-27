@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import ItemCard from "./ItemCard";
 
 
-const Shop = () => {
+const Shop = ({addItem}) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -32,10 +32,12 @@ const Shop = () => {
       <div className="itemList">
         {items.map(item => (
           <ItemCard
+            key={item.id}
             id={item.id} 
             name={item.name} 
             retailPrice={item.retailPrice}
             image={item.image.thumbnail}
+            addItem={addItem}
           />
         ))}
       </div>
