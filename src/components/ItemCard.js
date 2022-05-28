@@ -4,7 +4,7 @@ import { useState } from "react";
 const ItemCard = ({id, name, retailPrice, image, addItem}) => {
   const [number, setNumber] = useState(0);
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     addItem({id, number});
     setNumber(0);
   }
@@ -17,10 +17,10 @@ const ItemCard = ({id, name, retailPrice, image, addItem}) => {
       <input 
         type ="number"
         min="0"
-        display={number} 
+        value={number} 
         onChange={(e) => setNumber(e.target.value)}
       />
-      <button onClick={() => handleClick(id)}>Add to cart</button>
+      <button onClick={() => handleClick()}>Add to cart</button>
     </div>
   );
 }

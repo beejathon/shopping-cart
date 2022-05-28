@@ -26,6 +26,13 @@ const Shop = ({addItem}) => {
     setItems(data.results)
   }
 
+  const findItem = ({id, number}) => {
+    const item = items.find((item) => item.id === id)
+    item.quantity = parseInt(number);
+
+    addItem(item);
+  }
+
   return (
     <div className="Shop">
       <h1>Welcome to my twizted SHOP of horrorz</h1>
@@ -37,7 +44,7 @@ const Shop = ({addItem}) => {
             name={item.name} 
             retailPrice={item.retailPrice}
             image={item.image.thumbnail}
-            addItem={addItem}
+            addItem={findItem}
           />
         ))}
       </div>

@@ -16,33 +16,40 @@ function App() {
 
   useEffect(() => {
     const total = cartItems.reduce((sum, item) => {
-      return sum + parseInt(item.number)
+      return sum + parseInt(item.quantity)
     }, 0)
 
     setItemTotal(total);
   }, [cartItems])
 
-  const onAdd = ({id, number}) => {
-    if (number < 1) return;
-    const itemInCart = cartItems.some((item) => item.id === id);
+  const onAdd = (item) => {
+    if (item.quantity < 1) return;
+    const itemInCart = cartItems.some((cartItem) => cartItem.id === item.id);
 
-    if (itemInCart) updateItem({id, number});
-    if (!itemInCart) addItem({id, number});
+    if (itemInCart) updateItem(item);
+    if (!itemInCart) addItem(item);
   };
 
-  const updateItem = ({id, number}) => {
+  const updateItem = (item) => {
     setCartItems((prevState) => {
-      const newCart = prevState.map((item) => {
-        if (item.id === id) item.number = parseInt(item.number) + parseInt(number);
-        return item;
+      const newCart = prevState.map((cartItem) => {
+        if (cartItem.id === item.id) cartItem.quantity = item.quantity + cartItem.quantity;
+        return cartItem;
       })
       return newCart;
     });
   }
 
-  const addItem = ({id, number}) => {
+  const addItem = (item) => {
     setCartItems((prevState) => {
-      const newCart = [...prevState, {id, number}]
+      const newCart = [...prevState, item]
+      return newCart;
+    })
+  }
+
+  const onRemove = (id) => {
+    setCartItems((prevState) => {
+      const newCart = prevState.filter((item) => item.id !== id)
       return newCart;
     })
   }
@@ -54,7 +61,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop addItem={onAdd} />} />
-          <Route path="/cart" element={<Cart items={cartItems} />} />
+          <Route path="/cart" element={<Cart items={cartItems} removeItem={onRemove} />} />
         </Routes>
       </Router>
     </div>
