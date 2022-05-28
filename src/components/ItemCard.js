@@ -6,6 +6,7 @@ const ItemCard = ({id, name, retailPrice, image, addItem}) => {
 
   const handleClick = (e) => {
     addItem({id, number});
+    setNumber(0);
   }
 
   return (
@@ -14,7 +15,8 @@ const ItemCard = ({id, name, retailPrice, image, addItem}) => {
       <h2 className="itemHeader">{name}</h2>
       <p>${retailPrice}</p>
       <input 
-        type ="number" 
+        type ="number"
+        min="0"
         display={number} 
         onChange={(e) => setNumber(e.target.value)}
       />

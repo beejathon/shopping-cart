@@ -12,25 +12,29 @@ import Cart from './components/Cart';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  const [itemTotal, setItemTotal] = useState(0);
 
   useEffect(() => {
-    
+    const total = cartItems.reduce((sum, item) => {
+      return sum + parseInt(item.number)
+    }, 0)
+
+    setItemTotal(total);
   }, [cartItems])
 
   const onAdd = ({id, number}) => {
-    const itemInCart = cartItems.includes(id);
+    if (number < 1) return;
+    const itemInCart = cartItems.some((item) => item.id === id);
 
-    if (itemInCart) { 
-      updateItem({id, number});
-    } else {
-      addItem({id, number});
-    }
+    if (itemInCart) updateItem({id, number});
+    if (!itemInCart) addItem({id, number});
   };
 
   const updateItem = ({id, number}) => {
     setCartItems((prevState) => {
       const newCart = prevState.map((item) => {
-        if (item.id === id) item.number += number;
+        if (item.id === id) item.number = parseInt(item.number) + parseInt(number);
+        return item;
       })
       return newCart;
     });
@@ -46,12 +50,11 @@ function App() {
   return (
     <div className='App'>
       <Router>
-        <Nav>
-          <Cart items={cartItems} />
-        </Nav>
+        <Nav itemTotal={itemTotal} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop addItem={onAdd}/>} />
+          <Route path="/shop" element={<Shop addItem={onAdd} />} />
+          <Route path="/cart" element={<Cart items={cartItems} />} />
         </Routes>
       </Router>
     </div>
