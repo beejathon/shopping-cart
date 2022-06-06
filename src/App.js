@@ -22,27 +22,31 @@ function App() {
     setItemTotal(total);
   }, [cartItems])
 
-  const onAdd = (item) => {
-    if (item.quantity < 1) return;
+  const onAdd = (item, number) => {
+    if (number < 1) return;
     const itemInCart = cartItems.some((cartItem) => cartItem.id === item.id);
 
-    if (itemInCart) updateItem(item);
-    if (!itemInCart) addItem(item);
+    if (itemInCart) updateItem(item.id, number);
+    if (!itemInCart) addItem(item, number);
   };
 
-  const updateItem = (item) => {
+  const updateItem = (id, number) => {
     setCartItems((prevState) => {
       const newCart = prevState.map((cartItem) => {
-        if (cartItem.id === item.id) cartItem.quantity = item.quantity + cartItem.quantity;
+        if (cartItem.id === id) {
+          cartItem.quantity = parseInt(cartItem.quantity) + parseInt(number);
+        } 
         return cartItem;
       })
       return newCart;
     });
   }
 
-  const addItem = (item) => {
+  const addItem = (item, number) => {
     setCartItems((prevState) => {
-      const newCart = [...prevState, item]
+      const newItem = item;
+      newItem.quantity = number;
+      const newCart = [...prevState, newItem]
       return newCart;
     })
   }

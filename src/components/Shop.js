@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import ItemCard from "./ItemCard";
-
+import '../styles/App.css';
 
 const Shop = ({addItem}) => {
   const [items, setItems] = useState([]);
@@ -23,14 +23,12 @@ const Shop = ({addItem}) => {
       'https://the-sneaker-database.p.rapidapi.com/sneakers?limit=10&brand=crocs', options
     )
     const data = await response.json();
-    setItems(data.results)
+    setItems(data.results);
   }
 
   const findItem = ({id, number}) => {
-    const item = items.find((item) => item.id === id)
-    item.quantity = parseInt(number);
-
-    addItem(item);
+    const item = items.find((item) => item.id === id);
+    addItem(item, number);
   }
 
   return (
