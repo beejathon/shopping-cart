@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/where-is-waldo/static/css/main.b0cfa60d.css",
+    "main.js": "/where-is-waldo/static/js/main.b9294bab.js",
+    "static/media/crocguy.webp": "/where-is-waldo/static/media/crocguy.432c1de47d86fd1264b0.webp",
+    "index.html": "/where-is-waldo/index.html",
+    "main.b0cfa60d.css.map": "/where-is-waldo/static/css/main.b0cfa60d.css.map",
+    "main.b9294bab.js.map": "/where-is-waldo/static/js/main.b9294bab.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b0cfa60d.css",
+    "static/js/main.b9294bab.js"
+  ]
+}
