@@ -1,4 +1,3 @@
-import './styles/App.css';
 import React, { useEffect, useState } from 'react';
 import { 
   BrowserRouter as Router, 
@@ -9,6 +8,7 @@ import Home from './components/Home';
 import Shop from './components/Shop';
 import Nav from './components/Nav';
 import Cart from './components/Cart';
+import { Container } from "@mui/material"
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -59,16 +59,16 @@ function App() {
   }
 
   return (
-    <div className='App'>
+    <Container sx={{height: '100vh'}}>
       <Router>
         <Nav itemTotal={itemTotal} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/shopping-cart" element={<Home />} />
           <Route path="/shop" element={<Shop addItem={onAdd} />} />
           <Route path="/cart" element={<Cart items={cartItems} removeItem={onRemove} />} />
         </Routes>
       </Router>
-    </div>
+    </Container>
   );
 }
 

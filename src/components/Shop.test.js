@@ -1,22 +1,9 @@
 import React from 'react';
-import { unmountComponentAtNode } from "react-dom";
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import Shop from './Shop';
 
 describe("Shop", () => {
-  let container = null;
-  beforeEach(() => {
-    container = document.createElement("div");
-    document.body.appendChild(container);
-  });
-  
-  afterEach(() => {
-    unmountComponentAtNode(container);
-    container.remove();
-    container = null;
-  });
-
   const mockResponse = {
     results: [
       { 
@@ -27,19 +14,24 @@ describe("Shop", () => {
       }
     ]
   };
-
-  jest.spyOn(global, "fetch").mockImplementation(() =>    
-    Promise.resolve({      
-      json: () => Promise.resolve(mockResponse)    
-    })  
-  );
+  beforeEach(() => {
+    jest.spyOn(global, "fetch").mockResolvedValue({
+      json: jest.fn().mockResolvedValue(mockResponse)
+    });
+  });
+  
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
 
   it("renders list of products", async () => {
+    const container = document.createElement('div');
     await act(async () => {
       render(<Shop />, container);
     })
-
-    expect(container.querySelector("[data-testid='item']")).toContain("niceshoe")
-    global.fetch.mockRestore();
+    const name = screen.getByText("niceshoe")
+    const price = screen.getByText("$99")
+    expect(name.textContent).toBe("niceshoe")
+    expect(price.textContent).toBe("$99")
   });
 })

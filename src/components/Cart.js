@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CartItemDetail from "./CartItemDetail";
 import CartTotal from "./CartTotal";
-import '../styles/App.css';
 
 const Cart = ({items, removeItem}) => {
   const [cartItems, setCartItems] = useState(items);

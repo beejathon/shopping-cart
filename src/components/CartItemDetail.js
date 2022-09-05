@@ -1,5 +1,4 @@
 import React from "react";
-import '../styles/App.css';
 
 const CartItemDetail = ({id, name, retailPrice, image, quantity, subTotal, removeItem}) => {
   return (

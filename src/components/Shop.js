@@ -1,7 +1,7 @@
+import { Grid, Stack, Typography } from "@mui/material";
 import React from "react";
 import { useState, useEffect } from "react";
 import ItemCard from "./ItemCard";
-import '../styles/App.css';
 
 const Shop = ({addItem}) => {
   const [items, setItems] = useState([]);
@@ -32,21 +32,42 @@ const Shop = ({addItem}) => {
   }
 
   return (
-    <div className="Shop">
-      <h1>Welcome to my twizted SHOP of horrorz</h1>
-      <div className="item-list">
-        {items.map(item => (
-          <ItemCard
-            key={item.id}
-            id={item.id} 
-            name={item.name} 
-            retailPrice={item.retailPrice}
-            image={item.image.thumbnail}
-            addItem={findItem}
-          />
+    <Stack
+      direction="column"
+      spacing={1}
+      justifyContent="space-between"
+      alignItems="center"
+      textAlign="center"
+    >
+      <Typography
+        variant="h4"
+        sx={{
+          mt: 2,
+          fontFamily: 'monospace',
+          fontWeight: 400,
+          fontSize: { xs: 24, md: 36 },
+          letterSpacing: { xs: 'none', md: '.4rem'},
+          color: 'inherit',
+          textDecoration: 'none',
+        }}
+      >
+        The Croc Shop
+      </Typography>
+      <Grid container rowSpacing={2} columnSpacing={{ xs: 2, sm: 2, md: 3 }} columns={{ xs: 1, md: 12 }}>
+        {items.map((item, index) => (
+          <Grid item xs={3} md={4} key={index}>
+            <ItemCard
+              key={item.id}
+              id={item.id} 
+              name={item.name} 
+              retailPrice={item.retailPrice}
+              image={item.image.thumbnail}
+              addItem={findItem}
+            />
+          </Grid> 
         ))}
-      </div>
-    </div> 
+      </Grid>
+    </Stack> 
   );
 }
 
