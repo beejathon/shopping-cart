@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/where-is-waldo/static/css/main.b0cfa60d.css",
-    "main.js": "/where-is-waldo/static/js/main.b9294bab.js",
-    "static/media/crocguy.webp": "/where-is-waldo/static/media/crocguy.432c1de47d86fd1264b0.webp",
-    "index.html": "/where-is-waldo/index.html",
-    "main.b0cfa60d.css.map": "/where-is-waldo/static/css/main.b0cfa60d.css.map",
-    "main.b9294bab.js.map": "/where-is-waldo/static/js/main.b9294bab.js.map"
+    "main.css": "/shopping-cart/static/css/main.b0cfa60d.css",
+    "main.js": "/shopping-cart/static/js/main.ef01d07b.js",
+    "static/media/crocguy.webp": "/shopping-cart/static/media/crocguy.432c1de47d86fd1264b0.webp",
+    "index.html": "/shopping-cart/index.html",
+    "main.b0cfa60d.css.map": "/shopping-cart/static/css/main.b0cfa60d.css.map",
+    "main.ef01d07b.js.map": "/shopping-cart/static/js/main.ef01d07b.js.map"
   },
   "entrypoints": [
     "static/css/main.b0cfa60d.css",
-    "static/js/main.b9294bab.js"
+    "static/js/main.ef01d07b.js"
   ]
 }
