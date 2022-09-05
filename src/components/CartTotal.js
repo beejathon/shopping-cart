@@ -2,11 +2,15 @@ import React from "react";
 import '../styles/App.css';
 
 const CartTotal = ({subtotal, shipping, total, toggleShipping}) => {
+  const checkout = () => {
+    alert('CROCS RULE!')
+  }
+  
   return (
     <div className="cart-total">
       Choose your shipping:
       <label>
-        <input onChange={(e) => toggleShipping(e.target.value)} type="radio" value="4.99" name="shipping" selected />     
+        <input onChange={(e) => toggleShipping(e.target.value)} type="radio" value="4.99" name="shipping" />     
         Standard
       </label>
       <label>
@@ -22,6 +26,7 @@ const CartTotal = ({subtotal, shipping, total, toggleShipping}) => {
         <li>Shipping: {shipping}</li>
         <li>Total: {total}</li>
       </ul>
+      <button onClick={checkout}>Checkout</button>
     </div>
   )
 }

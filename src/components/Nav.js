@@ -5,17 +5,25 @@ import '../styles/App.css';
 
 const Nav = ({itemTotal}) => {
   return (
-    <nav>
-      <div className="spacer">.</div>
-      <Link to='/'>Home</Link>
-      <Link to='/shop'>Shop</Link>
-      <div className="cartButton">
-        <Link to='/cart'>
-          <img src={cartImg} alt="" />
-          <div className="overlay">{itemTotal}</div>
-        </Link>
+    <header>
+      <div className="logo">
+        <Link to='/'>
+          The Croc Pit
+        </Link>  
       </div>
-    </nav>
+      <nav>
+        <div className="spacer">.</div>
+        <Link to='/'>Home</Link>
+        <Link to='/shop'>Shop</Link>
+        <div className="cartButton">
+          <Link to='/cart'>
+            <img src={cartImg} alt="" />
+            <div className="overlay">{itemTotal}</div>
+          </Link>
+        </div>
+      </nav>
+    </header>
+
   );
 }
 

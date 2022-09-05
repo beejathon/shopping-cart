@@ -34,7 +34,7 @@ const Shop = ({addItem}) => {
   return (
     <div className="Shop">
       <h1>Welcome to my twizted SHOP of horrorz</h1>
-      <div className="itemList">
+      <div className="item-list">
         {items.map(item => (
           <ItemCard
             key={item.id}

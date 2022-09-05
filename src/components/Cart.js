@@ -40,10 +40,10 @@ const Cart = ({items, removeItem}) => {
   }
 
   return (
-    <div>
+    <div className="Cart">
       <h2>Your twizted lil shopping cart</h2>
-      <div className="Cart">
-        <div className="cartItems">
+      <div className="cart-table">
+        <div className="cart-items">
           {cartItems.map(item => (
             <CartItemDetail
               key={item.id}

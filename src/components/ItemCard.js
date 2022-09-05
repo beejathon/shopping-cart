@@ -11,8 +11,7 @@ const ItemCard = ({id, name, retailPrice, image, addItem}) => {
   }
 
   return (
-    <div className="itemCard">
-      <div className="spacer">.</div>
+    <div className="item-card">
       <div className="info">
         <img src={image} alt="" />
         <p className="name">{name}</p>
