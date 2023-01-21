@@ -1,3 +1,4 @@
+import { Grid, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CartItemDetail from "./CartItemDetail";
 import CartTotal from "./CartTotal";
@@ -7,10 +8,6 @@ const Cart = ({items, removeItem}) => {
   const [subTotal, setSubTotal] = useState(0);
   const [shipping, setShipping] = useState(4.99);
   const [total, setTotal] = useState(0);
-
-  useEffect(() => {
-    setCartItems(items);
-  }, [items])
 
   useEffect(() => {
     subTotalItems();
@@ -39,11 +36,35 @@ const Cart = ({items, removeItem}) => {
   }
 
   return (
-    <div className="Cart">
-      <h2>Your twizted lil shopping cart</h2>
-      <div className="cart-table">
-        <div className="cart-items">
-          {cartItems.map(item => (
+    <Stack
+      direction="column"
+      spacing={1}
+      justifyContent="space-between"
+      alignItems="center"
+      textAlign="center"
+    >
+      <Typography
+        variant="h4"
+        sx={{
+          mt: 2,
+          fontFamily: 'monospace',
+          fontWeight: 400,
+          fontSize: { xs: 24, md: 36 },
+          letterSpacing: { xs: 'none', md: '.2rem'},
+          color: 'inherit',
+          textDecoration: 'none',
+        }}
+      >
+        Checkout
+      </Typography>
+      <Grid 
+        container 
+        rowSpacing={2} 
+        direction="column"
+        columns={1}
+      >
+        {cartItems.map(item => (
+          <Grid item xs={1} sx={{ maxWidth: "100%" }}>
             <CartItemDetail
               key={item.id}
               id={item.id} 
@@ -54,16 +75,16 @@ const Cart = ({items, removeItem}) => {
               subTotal={item.subTotal}
               removeItem={removeItem}
             />
-          ))}
-        </div>
-        <CartTotal 
-          subtotal={subTotal} 
-          shipping={shipping}
-          total={total}
-          toggleShipping={toggleShipping}
-        />
-      </div>
-    </div>
+          </Grid>
+        ))}
+      </Grid>
+      <CartTotal 
+        subtotal={subTotal} 
+        shipping={shipping}
+        total={total}
+        toggleShipping={toggleShipping}
+      />
+    </Stack>
   )
 }
 

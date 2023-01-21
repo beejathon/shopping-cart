@@ -46,14 +46,19 @@ const Shop = ({addItem}) => {
           fontFamily: 'monospace',
           fontWeight: 400,
           fontSize: { xs: 24, md: 36 },
-          letterSpacing: { xs: 'none', md: '.4rem'},
+          letterSpacing: { xs: 'none', md: '.2rem'},
           color: 'inherit',
           textDecoration: 'none',
         }}
       >
         The Croc Shop
       </Typography>
-      <Grid container rowSpacing={2} columnSpacing={{ xs: 2, sm: 2, md: 3 }} columns={{ xs: 1, md: 12 }}>
+      <Grid 
+        container 
+        rowSpacing={2} 
+        columnSpacing={{ xs: 2, sm: 2, md: 3 }} 
+        columns={{ xs: 1, md: 12 }}
+      >
         {items.map((item, index) => (
           <Grid item xs={3} md={4} key={index}>
             <ItemCard
