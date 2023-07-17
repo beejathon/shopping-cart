@@ -1,14 +1,11 @@
 {
   "files": {
-    "main.css": "/shopping-cart/static/css/main.b0cfa60d.css",
-    "main.js": "/shopping-cart/static/js/main.ef01d07b.js",
+    "main.js": "/shopping-cart/static/js/main.55382127.js",
     "static/media/crocguy.webp": "/shopping-cart/static/media/crocguy.432c1de47d86fd1264b0.webp",
     "index.html": "/shopping-cart/index.html",
-    "main.b0cfa60d.css.map": "/shopping-cart/static/css/main.b0cfa60d.css.map",
-    "main.ef01d07b.js.map": "/shopping-cart/static/js/main.ef01d07b.js.map"
+    "main.55382127.js.map": "/shopping-cart/static/js/main.55382127.js.map"
   },
   "entrypoints": [
-    "static/css/main.b0cfa60d.css",
-    "static/js/main.ef01d07b.js"
+    "static/js/main.55382127.js"
   ]
 }
